@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace WpfApp1
 {
@@ -31,5 +33,36 @@ namespace WpfApp1
             theme.PrimaryMid = new ColorPair((Color)ColorConverter.ConvertFromString("#FF2196F3"), Colors.White);
             paletteHelper.SetTheme(theme);
         }
+
+        private void browerExcelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Excel File (*.xlsm)|*.xlsm" + "|Excel File (*.xlsx)|*.xlsx" + "|All Files (*.*)|*.*";
+
+
+            var result = fileDialog.ShowDialog();
+
+            if (result != null && (bool)result)
+            {
+                excelTb.Text = fileDialog.FileName;
+                excelTb.CaretIndex = fileDialog.FileName.Length;
+                excelTb.ScrollToHorizontalOffset(double.MaxValue);
+            }
+        }
+
+        private void browerCodeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CommonOpenFileDialog folderBrowserDialog = new CommonOpenFileDialog();
+            folderBrowserDialog.IsFolderPicker = true;
+            CommonFileDialogResult result = folderBrowserDialog.ShowDialog();
+
+            if (result == CommonFileDialogResult.Ok)
+            {
+                codeTb.Text = folderBrowserDialog.FileName;
+                codeTb.CaretIndex = folderBrowserDialog.FileName.Length;
+                codeTb.ScrollToHorizontalOffset(double.MaxValue);
+            }
+        }
+
     }
 }

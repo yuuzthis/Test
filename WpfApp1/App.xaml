@@ -16,7 +16,7 @@
             <ImageBrush x:Key="PrimaryColor">#FF03A9F4</ImageBrush>
             
             <Style x:Key="TextBox_Default" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
-                <Setter Property="Padding" Value="3,0" />
+                <Setter Property="Padding" Value="3" />
                 <Setter Property="BorderThickness" Value="1" />
             </Style>
             
