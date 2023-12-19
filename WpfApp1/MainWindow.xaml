@@ -3,10 +3,74 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="AnalysisSheet" Height="450" Width="600" Background="#FFF1F1F1" Icon="Icon1.ico">
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="274*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <GroupBox x:Name="groupBox" Header="Input" Padding="3" Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBox x:Name="excelTb" Height="27" VerticalAlignment="Center" AllowDrop="True" Style="{StaticResource TextBox_Default}" material:HintAssist.Hint="Warning List"/>
+                            <Button x:Name="excelBtn" Grid.Column="1" Margin="3,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Style="{StaticResource Button_Dafault}">
+                                <material:PackIcon Kind="MoreHoriz" />
+                            </Button>
+
+                        <TextBox x:Name="codeTb" Grid.Row="2"  Height="27" Margin="0,5,0,0" VerticalAlignment="Center" AllowDrop="True" Style="{StaticResource TextBox_Default}" material:HintAssist.Hint="Source Path"/>
+                            <Button x:Name="codeBtn" Grid.Row="2" Grid.Column="1" Margin="3,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Style="{StaticResource Button_Dafault}">
+                                <material:PackIcon Kind="MoreHoriz" />
+                            </Button>
+                    </Grid>
+                </GroupBox>
+                <Button x:Name="runBtn" Grid.Column="1" Margin="3,0,3,0" Style="{StaticResource Button_Dafault}" HorizontalAlignment="Stretch">
+                    <material:PackIcon Kind="PlayCircleOutline" HorizontalAlignment="Center" VerticalAlignment="Center" Width="54" Height="76"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid>
+                    <GroupBox x:Name="groupBox1" Header="Peer Review" Padding="3" Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1120*"/>
+                            </Grid.RowDefinitions>
+
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False" Grid.Row="2">
+                                <StackPanel x:Name="stackBox" VerticalAlignment="Top">
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+ 
+
     </Grid>
 </Window>
